@@ -1,6 +1,6 @@
 import csv
 
-filename = 'data2.csv'
+filename = 'datasetcleaned.csv'
 filenamefields = 'fields.csv'
 
   
@@ -73,7 +73,7 @@ print(len(rows[100]))
 print(len(write))
 
 #writing to new csv
-filename1 = "outputWoDevice.csv"
+filename1 = "outputWoDeviceCleaned.csv"
 with open(filename1, 'w' , newline='') as csvfile1:
     # creating a csv writer object
     csvwriter = csv.writer(csvfile1)
