@@ -8,7 +8,6 @@ filenamefields = 'fields.csv'
 fields = []
 fields1 = []
 textfields = []
-# fields =["very conservative"	"conservative"	"moderate"	"liberal"	"veryliberal"	"great deal"	"fair amount"	"not very much"	"none at all"	"The new york times"	"The wall street journal"	"USA Today"	"The washington post", "Fox News"	"Breitbart"	"CNN"	"Buzzfeed news"	"Huffington post"	"Time"	"U.S.News & World Report"	"yes"	"no"	"Decrease trust"	"Increase trust"	"no change"	"strongly approve"	"somewhat approve"	"somewhat disapprove"	"strongly disapprove"	"18-29"	"30-44"	"45-59"	"60+"	"female"	"male"	"$0 to $9.999"	"$10.000 to $24.999"	"$25.000 to $49.999"	"$50.000 to $74.999"	"$75.000 to $99.999"	"$100.000 to $124.999"	$100.000 to $124.999	"$150.000 to $174.999"	"$175.000 to $199.999"	"$200.000 and up"	"Prefer not to answer"	"New England"	"Middle Atlantic"	"East North Central"	"West North Central"	"South Atlantic"	"East South Central"	West South Central	Mountain	Pacific	iOS Phone / Tablet	Android Phone / Tablet	Other Phone / Tablet	Windows Desktop / Laptop	MacOS Desktop / Laptop	Other Phone / Tablet]
 
 rows = []
 new = []
@@ -44,17 +43,19 @@ print(fields)
 print('\n')
 print(textfields)
   
-#  printing first 5 rows
+#  Mapping binary rows to text
 print('\n\n')
 for row in rows:
-            length = len(row) 
+            length = len(row) - 6
             i = 0
             while i < length:
+                # removing duplicate outlets to keep the first one 
                 if 9 <= i <= 19:
                     bool = False
                     while bool == False:
                         if row[i] == '1':
                             bool = True
+                            #adding selected fields to list 
                             new.append(textfields[i])
                         else :    
                             i += 1
@@ -63,13 +64,16 @@ for row in rows:
                 else:                            
                     if row[i] == '1':
                             new.append(textfields[i])
-                    i += 1        
+                    i += 1  
+            #adding list to global list      
             write.append(new)
             new = []
 #new
 print(len(rows[100]))
 print(len(write))
-filename1 = "outputv.csv"
+
+#writing to new csv
+filename1 = "outputWoDevice.csv"
 with open(filename1, 'w' , newline='') as csvfile1:
     # creating a csv writer object
     csvwriter = csv.writer(csvfile1)
